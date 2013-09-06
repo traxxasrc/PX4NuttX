@@ -523,7 +523,7 @@ static ssize_t fat_read(FAR struct file *filep, char *buffer, size_t buflen)
        */
 
       nsectors = buflen / fs->fs_hwsectorsize;
-      if (nsectors > 0 && sectorindex == 0)
+      if (nsectors > 0 && sectorindex == 0 && (0x3 & (uintptr_t)userbuffer) == 0)
         {
           /* Read maximum contiguous sectors directly to the user's
            * buffer without using our tiny read buffer.
@@ -736,7 +736,7 @@ static ssize_t fat_write(FAR struct file *filep, const char *buffer,
        */
 
       nsectors = buflen / fs->fs_hwsectorsize;
-      if (nsectors > 0 && sectorindex == 0)
+      if (nsectors > 0 && sectorindex == 0 && (0x3 & (uintptr_t)userbuffer) == 0)
         {
           /* Write maximum contiguous sectors directly from the user's
            * buffer without using our tiny read buffer.
