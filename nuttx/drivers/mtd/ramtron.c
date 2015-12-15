@@ -166,6 +166,14 @@ static struct ramtron_parts_s ramtron_parts[] =
     40000000                      /* speed */
   },
   {
+    "FM25V01A",                   /* name */
+    0x21,                         /* id1 */
+    0x08,                         /* id2 */
+    16L*1024L,                    /* size */
+    2,                            /* addr_len */
+    40000000                      /* speed */
+  },
+  {
     "FM25V02",                    /* name */
     0x22,                         /* id1 */
     0x00,                         /* id2 */
